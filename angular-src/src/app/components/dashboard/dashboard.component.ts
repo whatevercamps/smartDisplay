@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ImagesService } from '../../services/images.service';
 import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 import { interval } from 'rxjs';
-const URL = 'http://186.28.214.139:3000/users/upload';
+const URL = 'http://186.28.70.232:3000/users/upload';
 var images = [];
 
 
