@@ -1,0 +1,24 @@
+<div style="width:100%; height: 100%; background-color: rgb(218, 218, 218)">
+  <div class="card" style="width: 20rem; height: 20rem">
+    <div class="card-body">
+      <form class="form-signin" (submit)="onLoginSubmit()">
+        <div class="form-group">
+          <label for="Username">Username</label>
+          <input type="text" class="form-control" placeholder="Enter Username" [(ngModel)]="username" name="username">
+        </div>
+        <div class="form-group">
+          <label for="Password">Password</label>
+          <input type="password" class="form-control" placeholder=" Enter Password" [(ngModel)]="password" name="password">
+        </div>
+        <div class="from-group">
+          <input class="btn btn-success" type="submit" value="Login">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

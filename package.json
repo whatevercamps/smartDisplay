@@ -1,0 +1,32 @@
+{
+  "name": "sliderraspbian",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "@angular/cli": "^6.2.6",
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "bootstrap": "^4.1.3",
+    "cors": "*",
+    "express": "*",
+    "jimp": "^0.5.3",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "multer": "^1.4.0",
+    "ngx-bootstrap": "^3.0.1",
+    "node-gyp": "^3.8.0",
+    "nodemon": "^1.18.4",
+    "passport": "*",
+    "passport-jwt": "*",
+    "rebuild": "^0.1.2",
+    "reload": "^2.3.1",
+    "shelljs": "^0.8.2"
+  },
+  "author": "David Bautista",
+  "license": "ISC"
+}

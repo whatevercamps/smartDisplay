@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/']"><span style="color:greenyellow">SMART</span><span style="color:whitesmoke">DISPLAY</span></a>
+
+
+
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item active" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+      <a class="nav-link"  [routerLink]="['/dashboard']">Dashboard</a>
+    </li>
+    <li class="nav-item active" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+      <a class="nav-link" [routerLink]="['/login']"><span style="color:greenyellow">Login</span></a>
+    </li>
+    <li class="nav-item active" *ngIf="authService.loggedIn()">
+      <a class="nav-link" (click)="onLogoutClick()" href="#"><span style="color:#FD1C03">Logout</span></a>
+    </li>
+  </ul>
+</nav>

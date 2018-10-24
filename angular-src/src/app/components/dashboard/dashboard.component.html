@@ -1,0 +1,37 @@
+<br>
+
+<div class="card" style="width: 34rem; height: 12rem">
+
+  <div class="card-body" style="text-align: center; ">
+    <input type="file" name="photo" ng2FileSelect [uploader]="uploader" *ngIf="uploader.progress == 0" />
+    <div style="height: 60px; background-image: url('assets/img/loading.gif');   background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: fill;"
+      *ngIf="uploader.progress > 0">
+    </div>
+    <h3 style="" *ngIf="uploader.progress > 98">
+      Procesando imagen...
+    </h3>
+  </div>
+
+  <div class="progress" style="text-align: center" *ngIf="uploader.progress > 0 && uploader.progress <= 98">
+    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%', 'text-align' : 'center'}">
+      SUBIENDOIMAGENSUBIENDOIMAGENSUBIENDOIMAGENSUBIENDOIMAGENSUBIENDOIMAGENSUBIENDOIMAGEN
+    </div>
+  </div>
+  <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="uploader.progress != 0">
+    Subir imagen
+  </button>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="imagen col-sm-4" *ngFor="let image of images" [style.backgroundImage]="'url('+ image.imgThumbnail +')'">
+      <div class="boton" (click)="onEliminarClick(image._id)" *ngIf="image.hashName != '$2a$10$zc7k2ZeaGhyWh1CQjfpFf.OFkjgaZXGdkR4rq0Az5LHXuC.OEJ6NO' && image.hashName != '$2a$10$eKEM7zuVAuIuU/2Di1LHSOvb1IBuaC8FY/PUfKFV1UB.KDmiH9vZC'">
+        <p style="text-align:center;">Eliminar</p>
+      </div>
+    </div>
+  </div>
+</div>

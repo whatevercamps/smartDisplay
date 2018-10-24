@@ -1,0 +1,32 @@
+.card {
+  margin: 0 auto;
+}
+
+.imagen {
+  width: 600px;
+  height: 315px;
+  background-position: center;
+  padding: 0;
+  /* Center the image */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.boton{
+    text-align: center;
+    color: whitesmoke;
+    position: relative;
+    margin-top: 275px;
+    opacity: 0.9;
+    background: #531212;
+    height: 40px;
+    width: 100%;
+}
+
+.imagen>.boton {
+  display: none;
+}
+
+.imagen:hover>.boton {
+  display: block;
+}
