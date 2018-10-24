@@ -11,14 +11,14 @@ export class ImagesService {
   getImages() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://186.29.69.122:3000/users/images', { headers: headers }).pipe(
+    return this.http.get('http://192.168.17.134:3000/users/images', { headers: headers }).pipe(
       map(res => res.json()));
   }
 
   eliminarImagen(id) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.delete('http://186.29.69.122:3000/users/removeImage?idImage=' + id, { headers: headers }).pipe(
+    return this.http.delete('http://192.168.17.134:3000/users/removeImage?idImage=' + id, { headers: headers }).pipe(
       map(res => res.json())
     );
   }
