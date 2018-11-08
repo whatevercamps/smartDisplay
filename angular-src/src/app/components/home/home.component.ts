@@ -18,21 +18,18 @@ export class HomeComponent implements OnInit {
   constructor(private imagesService: ImagesService, private router: Router) { }
 
   subirContador = function () {
-
+    console.log(this.n3 + " y tam: " + this.tam);
     if (this.images != undefined) {
-      console.log(this.images[this.n3]);
       if (this.images[this.n3] != undefined) {
+        console.log("obteniendo imagen en pos " + this.n3);
         this.image = this.images[this.n3];
-        console.log(this.image);
       }
     }
-
     if (this.n3 >= this.tam - 1) {
       this.n3 = 0;
     } else {
-      this.n3 += this.n3 + 1;
+      this.n3 = this.n3 + 1;
     }
-    console.log(this.n3);
   }
 
 
