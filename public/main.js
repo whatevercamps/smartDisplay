@@ -329,7 +329,7 @@ module.exports = ".img-responsive {\n    display: block;\n    width: 100%; \n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<img [src]=\"image.img\" [attr.alt]=\"image.img.alt\" class=\"img-responsive\">\n"
+module.exports = "<img *ngIf=\"image != undefined\" [src]=\"image.img\" [attr.alt]=\"image.img.alt\" class=\"img-responsive\">\n"
 
 /***/ }),
 
