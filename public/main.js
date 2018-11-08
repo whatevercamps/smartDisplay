@@ -329,7 +329,7 @@ module.exports = ".img-responsive {\n    display: block;\n    width: 100%; \n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"image != undefined\">\n  <img [src]=\"image.img\" [attr.alt]=\"image.img.alt\" class=\"img-responsive\">\n</div>\n"
+module.exports = "<img [src]=\"image.img\" [attr.alt]=\"image.img.alt\" class=\"img-responsive\">\n"
 
 /***/ }),
 
@@ -369,10 +369,8 @@ var HomeComponent = /** @class */ (function () {
         this.tam = 0;
         this.n3 = 0;
         this.subirContador = function () {
-            console.log(this.n3 + " y tam: " + this.tam);
             if (this.images != undefined) {
                 if (this.images[this.n3] != undefined) {
-                    console.log("obteniendo imagen en pos " + this.n3);
                     this.image = this.images[this.n3];
                 }
             }
@@ -537,7 +535,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".navbar{\n    opacity: 0;\n    transition: all 0.4s\n}\n\n.navbar:hover{\n    opacity: 1;\n}"
 
 /***/ }),
 
@@ -548,7 +546,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" [routerLink]=\"['/']\"><span style=\"color:greenyellow\">SAEJ</span><span style=\"color:whitesmoke\">PUBLICITY</span></a>\n\n\n\n  <ul class=\"navbar-nav ml-auto\">\n    <li class=\"nav-item active\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\n      <a class=\"nav-link\"  [routerLink]=\"['/dashboard']\">Dashboard</a>\n    </li>\n    <li class=\"nav-item active\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\n      <a class=\"nav-link\" [routerLink]=\"['/login']\"><span style=\"color:greenyellow\">Login</span></a>\n    </li>\n    <li class=\"nav-item active\" *ngIf=\"authService.loggedIn()\">\n      <a class=\"nav-link\" (click)=\"onLogoutClick()\" href=\"#\"><span style=\"color:#FD1C03\">Logout</span></a>\n    </li>\n  </ul>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark fixed-top\">\n  <a class=\"navbar-brand\" [routerLink]=\"['/']\"><span style=\"color:greenyellow\">SAEJ</span><span style=\"color:whitesmoke\">PUBLICITY</span></a>\n\n\n\n  <ul class=\"navbar-nav ml-auto\">\n    <li class=\"nav-item active\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\n      <a class=\"nav-link\"  [routerLink]=\"['/dashboard']\">Dashboard</a>\n    </li>\n    <li class=\"nav-item active\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\n      <a class=\"nav-link\" [routerLink]=\"['/login']\"><span style=\"color:greenyellow\">Login</span></a>\n    </li>\n    <li class=\"nav-item active\" *ngIf=\"authService.loggedIn()\">\n      <a class=\"nav-link\" (click)=\"onLogoutClick()\" href=\"#\"><span style=\"color:#FD1C03\">Logout</span></a>\n    </li>\n  </ul>\n</nav>"
 
 /***/ }),
 
