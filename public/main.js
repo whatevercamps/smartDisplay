@@ -369,6 +369,13 @@ var HomeComponent = /** @class */ (function () {
         this.tam = 0;
         this.n3 = 0;
         this.subirContador = function () {
+            if (this.images != undefined) {
+                console.log(this.images[this.n3]);
+                if (this.images[this.n3] != undefined) {
+                    this.image = this.images[this.n3];
+                    console.log(this.image);
+                }
+            }
             if (this.n3 >= this.tam - 1) {
                 this.n3 = 0;
             }
@@ -381,13 +388,6 @@ var HomeComponent = /** @class */ (function () {
             var _this = this;
             this.imagesService.getImages().subscribe(function (res) {
                 var imgsTemp = res.imgs;
-                if (_this.images != undefined) {
-                    console.log(_this.images[_this.n3]);
-                    if (_this.images[_this.n3] != undefined) {
-                        _this.image = _this.images[_this.n3];
-                        console.log(_this.image);
-                    }
-                }
                 if (_this.images !== undefined && imgsTemp !== undefined) {
                     if (_this.tam == imgsTemp.length) {
                         return true;

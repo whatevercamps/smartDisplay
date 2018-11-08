@@ -18,6 +18,15 @@ export class HomeComponent implements OnInit {
   constructor(private imagesService: ImagesService, private router: Router) { }
 
   subirContador = function () {
+
+    if (this.images != undefined) {
+      console.log(this.images[this.n3]);
+      if (this.images[this.n3] != undefined) {
+        this.image = this.images[this.n3];
+        console.log(this.image);
+      }
+    }
+
     if (this.n3 >= this.tam - 1) {
       this.n3 = 0;
     } else {
@@ -31,14 +40,6 @@ export class HomeComponent implements OnInit {
     this.imagesService.getImages().subscribe(res => {
 
       var imgsTemp = res.imgs;
-
-      if (this.images != undefined) {
-        console.log(this.images[this.n3]);
-        if (this.images[this.n3] != undefined) {
-          this.image = this.images[this.n3];
-          console.log(this.image);
-        }
-      }
 
       if (this.images !== undefined && imgsTemp !== undefined) {
         if (this.tam == imgsTemp.length) {
