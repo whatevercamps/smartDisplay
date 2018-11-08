@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ImagesService } from '../../services/images.service';
 import { interval } from 'rxjs';
 var images = [];
+var image: String;
 
 @Component({
   selector: 'app-home',
@@ -12,13 +13,32 @@ var images = [];
 export class HomeComponent implements OnInit {
 
   tam = 0;
+  n3 = 0;
 
   constructor(private imagesService: ImagesService, private router: Router) { }
+
+  subirContador = function () {
+    if (this.n3 >= this.tam - 1) {
+      this.n3 = 0;
+    } else {
+      this.n3 += this.n3 + 1;
+    }
+    console.log(this.n3);
+  }
+
 
   cargarImagenes = function () {
     this.imagesService.getImages().subscribe(res => {
 
       var imgsTemp = res.imgs;
+
+      if (this.images != undefined) {
+        console.log(this.images[this.n3]);
+        if (this.images[this.n3] != undefined) {
+          this.image = this.images[this.n3];
+          console.log(this.image);
+        }
+      }
 
       if (this.images !== undefined && imgsTemp !== undefined) {
         if (this.tam == imgsTemp.length) {
@@ -38,7 +58,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  
+
 
   showNavigationArrows = false;
   showNavigationIndicators = false;
@@ -51,10 +71,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     // Create an Observable that will publish a value on an interval
     const secondsCounter = interval(1000);
+    const secondsCounter2 = interval(7000);
     // Subscribe to begin publishing values
     secondsCounter.subscribe(n => this.cargarImagenes());
-
+    // Subscribe to begin publishing values
+    secondsCounter2.subscribe(n2 => this.subirContador());
   }
 
 }
-

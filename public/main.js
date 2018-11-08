@@ -329,7 +329,7 @@ module.exports = ".img-responsive {\n    display: block;\n    width: 100%; \n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n    <ngb-carousel *ngIf=\"images\" [showNavigationArrows]=\"showNavigationArrows\" [pauseOnHover]=\"false\" [interval]=\"7000\" [showNavigationIndicators]=\"showNavigationIndicators\">\n        <ng-template ngbSlide *ngFor=\"let image of images\">\n          <img [src]=\"image.img\" alt=\"img.alt\" class=\"img-responsive\">\n          <div class=\"carousel-caption\">\n          </div>\n        </ng-template>\n      </ngb-carousel>"
+module.exports = "<div *ngIf=\"image != undefined\">\n  <img [src]=\"image.img\" [attr.alt]=\"image.img.alt\" class=\"img-responsive\">\n</div>\n"
 
 /***/ }),
 
@@ -361,15 +361,33 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var images = [];
+var image;
 var HomeComponent = /** @class */ (function () {
     function HomeComponent(imagesService, router) {
         this.imagesService = imagesService;
         this.router = router;
         this.tam = 0;
+        this.n3 = 0;
+        this.subirContador = function () {
+            if (this.n3 >= this.tam - 1) {
+                this.n3 = 0;
+            }
+            else {
+                this.n3 += this.n3 + 1;
+            }
+            console.log(this.n3);
+        };
         this.cargarImagenes = function () {
             var _this = this;
             this.imagesService.getImages().subscribe(function (res) {
                 var imgsTemp = res.imgs;
+                if (_this.images != undefined) {
+                    console.log(_this.images[_this.n3]);
+                    if (_this.images[_this.n3] != undefined) {
+                        _this.image = _this.images[_this.n3];
+                        console.log(_this.image);
+                    }
+                }
                 if (_this.images !== undefined && imgsTemp !== undefined) {
                     if (_this.tam == imgsTemp.length) {
                         return true;
@@ -393,8 +411,11 @@ var HomeComponent = /** @class */ (function () {
         var _this = this;
         // Create an Observable that will publish a value on an interval
         var secondsCounter = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(1000);
+        var secondsCounter2 = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["interval"])(7000);
         // Subscribe to begin publishing values
         secondsCounter.subscribe(function (n) { return _this.cargarImagenes(); });
+        // Subscribe to begin publishing values
+        secondsCounter2.subscribe(function (n2) { return _this.subirContador(); });
     };
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
