@@ -260,12 +260,10 @@ var DashboardComponent = /** @class */ (function () {
                     console.log(err);
                 }
                 if (resp.success === true) {
-                    console.log('ImageUpload:uploaded:', item, status, response);
                     alert('Imagen subida correctamente.');
                     _this.router.navigate(['']);
                 }
                 else {
-                    console.log(response);
                     alert(resp.msg);
                     _this.uploader = new ng2_file_upload_ng2_file_upload__WEBPACK_IMPORTED_MODULE_4__["FileUploader"]({ url: URL, itemAlias: 'photo' });
                     _this.cargarSubidor();
@@ -275,7 +273,6 @@ var DashboardComponent = /** @class */ (function () {
     }
     DashboardComponent.prototype.onEliminarClick = function (id) {
         var _this = this;
-        console.log(id);
         this.imagesService.eliminarImagen(id).subscribe(function (data) {
             if (data.success) {
                 _this.tam--;
@@ -375,19 +372,14 @@ var HomeComponent = /** @class */ (function () {
                 var imgsTemp = res.imgs;
                 if (_this.images !== undefined && imgsTemp !== undefined) {
                     if (_this.tam == imgsTemp.length) {
-                        console.log('sigue igual');
                         return true;
                     }
                 }
-                console.log('no es igual');
                 if (imgsTemp !== undefined) {
-                    console.log('cambiando!');
                     _this.images = imgsTemp;
                     _this.tam = _this.images.length;
                     return true;
                 }
-                console.log('no es dif a undefind');
-                console.log(imgsTemp);
             }, function (err) {
                 console.log(err);
                 return false;

@@ -22,20 +22,14 @@ export class HomeComponent implements OnInit {
 
       if (this.images !== undefined && imgsTemp !== undefined) {
         if (this.tam == imgsTemp.length) {
-          console.log('sigue igual');
           return true;
         }
       }
-      console.log('no es igual');
       if (imgsTemp !== undefined) {
-        console.log('cambiando!');
         this.images = imgsTemp;
         this.tam = this.images.length;
         return true;
       }
-      console.log('no es dif a undefind');
-      console.log(imgsTemp);
-
     },
       err => {
         console.log(err);
@@ -44,6 +38,7 @@ export class HomeComponent implements OnInit {
 
   }
 
+  
 
   showNavigationArrows = false;
   showNavigationIndicators = false;

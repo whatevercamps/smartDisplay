@@ -52,11 +52,9 @@ export class DashboardComponent implements OnInit {
       }
 
       if (resp.success === true) {
-        console.log('ImageUpload:uploaded:', item, status, response);
         alert('Imagen subida correctamente.');
         this.router.navigate(['']);
       } else {
-        console.log(response);
         alert(resp.msg);
         this.uploader = new FileUploader({ url: URL, itemAlias: 'photo' });
         this.cargarSubidor();
@@ -65,7 +63,6 @@ export class DashboardComponent implements OnInit {
   };
 
   onEliminarClick(id) {
-    console.log(id);
     this.imagesService.eliminarImagen(id).subscribe(data => {
       if (data.success) {
         this.tam--;
