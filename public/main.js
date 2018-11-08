@@ -224,7 +224,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var URL = 'http://192.168.17.134:3000/users/upload';
+var URL = 'http://192.168.1.54:3000/users/upload';
 var images = [];
 var DashboardComponent = /** @class */ (function () {
     function DashboardComponent(imagesService, authService, router) {
@@ -546,7 +546,7 @@ module.exports = ".navbar{\n    opacity: 0;\n    transition: all 0.4s\n}\n\n.nav
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark fixed-top\">\n  <a class=\"navbar-brand\" [routerLink]=\"['/']\"><span style=\"color:greenyellow\">SAEJ</span><span style=\"color:whitesmoke\">PUBLICITY</span></a>\n\n\n\n  <ul class=\"navbar-nav ml-auto\">\n    <li class=\"nav-item active\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\n      <a class=\"nav-link\"  [routerLink]=\"['/dashboard']\">Dashboard</a>\n    </li>\n    <li class=\"nav-item active\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\n      <a class=\"nav-link\" [routerLink]=\"['/login']\"><span style=\"color:greenyellow\">Login</span></a>\n    </li>\n    <li class=\"nav-item active\" *ngIf=\"authService.loggedIn()\">\n      <a class=\"nav-link\" (click)=\"onLogoutClick()\" href=\"#\"><span style=\"color:#FD1C03\">Logout</span></a>\n    </li>\n  </ul>\n</nav>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark fixed-top\">\n  <a class=\"navbar-brand\" [routerLink]=\"['/']\"><span style=\"color:greenyellow\">REDETEK</span><span style=\"color:whitesmoke\">PUBLICITY</span></a>\n\n\n\n  <ul class=\"navbar-nav ml-auto\">\n    <li class=\"nav-item active\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\n      <a class=\"nav-link\"  [routerLink]=\"['/dashboard']\">Dashboard</a>\n    </li>\n    <li class=\"nav-item active\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\n      <a class=\"nav-link\" [routerLink]=\"['/login']\"><span style=\"color:greenyellow\">Login</span></a>\n    </li>\n    <li class=\"nav-item active\" *ngIf=\"authService.loggedIn()\">\n      <a class=\"nav-link\" (click)=\"onLogoutClick()\" href=\"#\"><span style=\"color:#FD1C03\">Logout</span></a>\n    </li>\n  </ul>\n</nav>"
 
 /***/ }),
 
@@ -697,12 +697,12 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.registerUser = function (user) {
         var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://192.168.17.134:3000/users/register', user, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res.json(); }));
+        return this.http.post('http://192.168.1.54:3000/users/register', user, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res.json(); }));
     };
     AuthService.prototype.authenticateUser = function (user) {
         var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://192.168.17.134:3000/users/authenticate', user, { headers: headers })
+        return this.http.post('http://192.168.1.54:3000/users/authenticate', user, { headers: headers })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res.json(); }));
     };
     AuthService.prototype.getProfile = function () {
@@ -710,7 +710,7 @@ var AuthService = /** @class */ (function () {
         this.loadToken();
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://192.168.17.134:3000/users/profile', { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res.json(); }));
+        return this.http.get('http://192.168.1.54:3000/users/profile', { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res.json(); }));
     };
     AuthService.prototype.storeUserData = function (token, user) {
         localStorage.setItem('id_token', token);
@@ -779,12 +779,12 @@ var ImagesService = /** @class */ (function () {
     ImagesService.prototype.getImages = function () {
         var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.get('http://192.168.17.134:3000/users/images', { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res.json(); }));
+        return this.http.get('http://192.168.1.54:3000/users/images', { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res.json(); }));
     };
     ImagesService.prototype.eliminarImagen = function (id) {
         var headers = new _angular_http__WEBPACK_IMPORTED_MODULE_1__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.delete('http://192.168.17.134:3000/users/removeImage?idImage=' + id, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res.json(); }));
+        return this.http.delete('http://192.168.1.54:3000/users/removeImage?idImage=' + id, { headers: headers }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (res) { return res.json(); }));
     };
     ImagesService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),

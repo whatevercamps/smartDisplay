@@ -14,14 +14,14 @@ export class AuthService {
   registerUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://192.168.17.134:3000/users/register', user, {headers: headers}).pipe(
+    return this.http.post('http://192.168.1.54:3000/users/register', user, {headers: headers}).pipe(
       map(res => res.json()));
   }
 
   authenticateUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://192.168.17.134:3000/users/authenticate', user, {headers: headers})
+    return this.http.post('http://192.168.1.54:3000/users/authenticate', user, {headers: headers})
       .pipe(map(res => res.json()));
   }
 
@@ -30,7 +30,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://192.168.17.134:3000/users/profile', {headers: headers}).pipe(
+    return this.http.get('http://192.168.1.54:3000/users/profile', {headers: headers}).pipe(
       map(res => res.json()));
   }
 
