@@ -246,6 +246,7 @@ router.post('/upload', (req, res) => {
                     });
                   } else {
                     //shell.exec('sh sc.sh');
+                    console.log('holaaa');
                     res.json({
                       success: true,
                       msg: 'File Uploaded!',
