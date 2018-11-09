@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit {
         alert('Imagen subida correctamente.');
         this.router.navigate(['']);
       } else {
-        alert(resp.msg);
+        console.log(resp.msg);
         this.uploader = new FileUploader({ url: URL, itemAlias: 'photo' });
         this.cargarSubidor();
       }

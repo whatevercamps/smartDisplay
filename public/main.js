@@ -264,7 +264,7 @@ var DashboardComponent = /** @class */ (function () {
                     _this.router.navigate(['']);
                 }
                 else {
-                    alert(resp.msg);
+                    console.log(resp.msg);
                     _this.uploader = new ng2_file_upload_ng2_file_upload__WEBPACK_IMPORTED_MODULE_4__["FileUploader"]({ url: URL, itemAlias: 'photo' });
                     _this.cargarSubidor();
                 }
