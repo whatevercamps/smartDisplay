@@ -12,7 +12,7 @@ var Jimp = require('jimp');
 //............subir methods.........
 
 // Set The Storage Engine
-const DIR = './smartdisplay/public/assets/img/';
+const DIR = './smartDisplay/public/assets/img/';
 
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
