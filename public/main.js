@@ -224,7 +224,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var URL = 'http://192.168.17.134:3000/users/upload';
+var URL = 'http://192.168.10.113:3000/users/upload';
 var images = [];
 var DashboardComponent = /** @class */ (function () {
     function DashboardComponent(imagesService, authService, router) {
