@@ -1,18 +1,18 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const config = require('../config/database');
-const passport = require('passport');
-const jwt = require('jsonwebtoken');
-const multer = require('multer');
-const path = require('path');
-const User = require('../models/user');
-const Image = require('../models/image');
-var shell = require('shelljs');
-var Jimp = require('jimp');
+const config = require("../config/database");
+const passport = require("passport");
+const jwt = require("jsonwebtoken");
+const multer = require("multer");
+const path = require("path");
+const User = require("../models/user");
+const Image = require("../models/image");
+var shell = require("shelljs");
+var Jimp = require("jimp");
 //............subir methods.........
-
+//hola como estas desde el pasado
 // Set The Storage Engine
-const DIR = './smartDisplay/public/assets/img/';
+const DIR = "./smartDisplay/public/assets/img/";
 
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -24,11 +24,10 @@ let storage = multer.diskStorage({
 });
 let upload = multer({
   storage: storage,
-  fileFilter: function (req, file, cb) {
+  fileFilter: function(req, file, cb) {
     checkFileType(file, cb);
   }
-}).single('photo');
-
+}).single("photo");
 
 // Check File Type
 function checkFileType(file, cb) {
@@ -42,19 +41,14 @@ function checkFileType(file, cb) {
   if (mimetype && extname) {
     return cb(null, true);
   } else {
-    cb('Por favor seleccione una imagen correcta!');
+    cb("Por favor seleccione una imagen correcta!");
   }
 }
 
-
 //...........fin subir methods
 
-
-
-
-
 // Register
-router.post('/register', (req, res, next) => {
+router.post("/register", (req, res, next) => {
   let newUser = new User({
     name: req.body.name,
     email: req.body.email,
@@ -66,19 +60,19 @@ router.post('/register', (req, res, next) => {
     if (err) {
       res.json({
         success: false,
-        msg: 'Fallo al registrar usuario'
+        msg: "Fallo al registrar usuario"
       });
     } else {
       res.json({
         success: true,
-        msg: 'Usuario registrado'
+        msg: "Usuario registrado"
       });
     }
   });
 });
 
 // Authenticate
-router.post('/authenticate', (req, res, next) => {
+router.post("/authenticate", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
 
@@ -87,7 +81,7 @@ router.post('/authenticate', (req, res, next) => {
     if (!user) {
       return res.json({
         success: false,
-        msg: 'Usuario incorrecto'
+        msg: "Usuario incorrecto"
       });
     }
 
@@ -100,7 +94,7 @@ router.post('/authenticate', (req, res, next) => {
 
         res.json({
           success: true,
-          token: 'JWT ' + token,
+          token: "JWT " + token,
           user: {
             id: user._id,
             name: user.name,
@@ -111,24 +105,22 @@ router.post('/authenticate', (req, res, next) => {
       } else {
         return res.json({
           success: false,
-          msg: 'Clave incorrecta'
+          msg: "Clave incorrecta"
         });
       }
     });
-
   });
 });
 
-
 //verFotos
-router.get('/images', (req, res, next) => {
+router.get("/images", (req, res, next) => {
   Image.getImages((err, images) => {
     if (err) throw err;
 
     if (!images) {
       return res.json({
         success: false,
-        msg: 'Error obteniendo imagenes'
+        msg: "Error obteniendo imagenes"
       });
     } else {
       res.json({
@@ -138,22 +130,25 @@ router.get('/images', (req, res, next) => {
   });
 });
 
-
 // Profile
-router.get('/profile', passport.authenticate('jwt', {
-  session: false
-}), (req, res, next) => {
-  res.json({
-    user: req.user
-  });
-});
+router.get(
+  "/profile",
+  passport.authenticate("jwt", {
+    session: false
+  }),
+  (req, res, next) => {
+    res.json({
+      user: req.user
+    });
+  }
+);
 
 // Validate
-router.post('/validate', (req, res, next) => {
-  res.send('VALIDATE');
+router.post("/validate", (req, res, next) => {
+  res.send("VALIDATE");
 });
 
-router.delete('/removeImage', (req, res, next) => {
+router.delete("/removeImage", (req, res, next) => {
   Image.findByIdAndDelete(req.query.idImage, (err, resp) => {
     if (err) {
       console.log(err);
@@ -168,8 +163,8 @@ router.delete('/removeImage', (req, res, next) => {
 });
 
 //subir fotos
-router.post('/upload', (req, res) => {
-  upload(req, res, (err) => {
+router.post("/upload", (req, res) => {
+  upload(req, res, err => {
     if (err) {
       return res.json({
         success: false,
@@ -181,12 +176,9 @@ router.post('/upload', (req, res) => {
         return res.json({
           success: false,
           idS: 400,
-          msg: 'No hay archivo'
+          msg: "No hay archivo"
         });
       } else {
-
-
-
         Jimp.read(DIR + req.file.filename, (err, image) => {
           if (err) {
             console.log("1." + err);
@@ -217,7 +209,7 @@ router.post('/upload', (req, res) => {
                 });
               }
 
-              image.write(DIR + 'thumbnail/' + req.file.filename, (err) => {
+              image.write(DIR + "thumbnail/" + req.file.filename, err => {
                 if (err) {
                   console.log("4." + err);
                   return res.json({
@@ -228,10 +220,10 @@ router.post('/upload', (req, res) => {
                 }
 
                 let newImage = new Image({
-                  img: 'assets/img/' + req.file.filename,
-                  imgThumbnail: 'assets/img/thumbnail/' + req.file.filename,
-                  alt: ' ',
-                  text: ' ',
+                  img: "assets/img/" + req.file.filename,
+                  imgThumbnail: "assets/img/thumbnail/" + req.file.filename,
+                  alt: " ",
+                  text: " ",
                   hashName: req.file.filename
                 });
 
@@ -242,32 +234,27 @@ router.post('/upload', (req, res) => {
                     console.log("5." + err);
                     res.json({
                       success: false,
-                      msg: 'Fallo al registrar imagen en la base de datos: ' + err
+                      msg:
+                        "Fallo al registrar imagen en la base de datos: " + err
                     });
                   } else {
                     //shell.exec('sh sc.sh');
-                    console.log('holaaa');
+                    console.log("holaaa");
                     res.json({
                       success: true,
-                      msg: 'File Uploaded!',
+                      msg: "File Uploaded!",
                       idS: 200,
                       file: `uploads/${req.file.filename}`
                     });
                   }
                 });
-
               });
-
             });
-
           });
-
         });
       }
     }
   });
 });
-
-
 
 module.exports = router;
